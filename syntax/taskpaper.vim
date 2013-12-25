@@ -24,10 +24,11 @@ endif
 syn case ignore
 
 setl conceallevel=2
-syn match taskpaperComment	/^.*$/ contains=taskpaperContext
+syn match taskpaperComment	/^.*$/ contains=taskpaperContext,taskpaperUrl
 syn match taskpaperProject	/^.\+:\(\s\+@[^ \t(]\+\(([^)]*)\)\?\)*$/ contains=taskpaperContext
-syn match taskpaperListItem	/^\t*-\s\+/
+syn match taskpaperListItem	/^\t*-\s\+/ contains=taskpaperUrl
 syn match taskpaperContext	/\zs@[^ \t(]\+\(([^)]*)\)\?/
+syn match taskpaperUrl	/http[^ ]*/ conceal cchar=☀
 syn match taskpaperDoneTag	/@done\(\(\s\|([^)]*)\).*\)\?/ conceal cchar=✓
 syn match taskpaperCancelledTag /@cancelled\(\(\s\|([^)]*)\).*\)\?/
 syn match taskpaperDone		/^.*\s@done\(\(\s\|([^)]*)\).*\)\?$/ contains=taskpaperDoneTag
